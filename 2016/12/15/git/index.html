@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="brain storming">
 <meta property="og:description" content="Git Book在 Git 里撤销(几乎)任何操作
 异同git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。 概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。Git 更像是把数据看作是对小">
-<meta property="og:updated_time" content="2016-12-16T08:23:37.901Z">
+<meta property="og:updated_time" content="2016-12-16T08:28:52.185Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git">
 <meta name="twitter:description" content="Git Book在 Git 里撤销(几乎)任何操作
@@ -444,7 +444,7 @@
 <p><strong> git rebase </strong> [basebranch] [topicbranch] ： 直接将特性分支变基到目标分支（git rebase master server）<br>git rebase –continue ：    继续直到完成<br>git rebase –abort ：         放弃<br>git rebase –skip ：         直接用topicbranch分支的取代basebranch分支的</p>
 <p><strong> git checkout master –&gt; git merge iss53 </strong> ：  iss53 merge到master上。将两个分支的末端所指的快照以及这两个分支的工作祖先，做一个简单的三方合并。<br><strong> git checkout iss53  –&gt; git rebase master </strong> ： iss53 rebase到master上。 首先找到这两个分支（即当前分支 experiment、变基操作的目标基底分支 master）的最近共同祖先 C2，然后对比当前分支相对于该祖先的历次提交，提取相应的修改并存为临时文件，然后将当前分支指向目标基底 C3, 最后以此将之前另存为临时文件的修改依序应用。</p>
 <p><strong> git fetch </strong> origin branch1:branch2 ：首先执行上面的fetch操作,使用远程branch1分支在本地创建branch2(但不会切换到该分支),如果本地不存在branch2分支, 则会自动创建一个新的branch2分支, 如果本地存在branch2分支, 并且是`fast forward’, 则自动合并两个分支, 否则, 会阻止以上操作.<br>git fetch origin :branch2 等价于: git fetch origin master:branch2</p>
-<h2 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h2><p>两种主要类型的标签：轻量标签（lightweight）与附注标签（annotated）。<br>一个轻量标签很像一个不会改变的分支,它只是一个特定提交的引用。附注标签是存储在Git数据库中的一个完整对象。<br>git tag  在控制台打印出当前仓库的所有标签<br>git tag -a [tag-name] -m “[tag-desc]”  参数a即annotated的缩写，指定标签类型，后附标签名。参数m指定标签说明，说明信息会保存在标签对象中。<br>git tag -a [tag-name] [commit-node-id]  补打标签<br>git tag -d [tag-name]  删除本地标签<br>git show  [tag-name] 查看标签的版本信息<br>git push [remote-name] [tage-name]  将标签提交到git服务器<br>git push [remote-name]  -–tags  将本地所有标签一次性提交到git服务器<br>git push origin &nbsp; :refs/tags/[tage-name]   推送一个空tag到远程tag</p>
+<h2 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h2><p>两种主要类型的标签：轻量标签（lightweight）与附注标签（annotated）。<br>一个轻量标签很像一个不会改变的分支,它只是一个特定提交的引用。附注标签是存储在Git数据库中的一个完整对象。<br><strong> git tag </strong> ： 在控制台打印出当前仓库的所有标签<br>git tag -a [tag-name] -m “[tag-desc]” ：  参数a即annotated的缩写，指定标签类型，后附标签名。参数m指定标签说明，说明信息会保存在标签对象中。<br>git tag -a [tag-name] [commit-node-id] ：  补打标签<br>git tag -d [tag-name] ：  删除本地标签<br>git show  [tag-name] ： 查看标签的版本信息<br>git push [remote-name] [tage-name] ：  将标签提交到git服务器<br>git push [remote-name] ：  -–tags  将本地所有标签一次性提交到git服务器<br><strong> git push origin &nbsp; :refs/tags/[tage-name] </strong> ： 推送一个空tag到远程tag</p>
 
 		<!-- 既然来啦，写点什么这里吧，写上去，所有文章底部都看到哦-->
 
